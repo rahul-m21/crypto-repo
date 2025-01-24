@@ -4,14 +4,14 @@ on:
   workflow_dispatch: # Allows manual trigger
   push:
     branches:
-      - PQC-V2
+      - PQC-V2 # Triggers on changes to the PQC-V2 branch
 
 jobs:
   run-pqc-assessment:
     runs-on: self-hosted
 
     steps:
-      # Debug: Verify the secret is accessible
+      # Debug Step 1: Verify the Secret is Accessible
       - name: Debug - Check Secret
         run: |
           if [ -z "${{ secrets.PQC_PAT_TOKEN }}" ]; then
@@ -22,20 +22,21 @@ jobs:
           fi
         shell: bash
 
+      # Debug Step 2: Check Repository Access
       - name: Debug - Check Repository Access
         run: |
-          echo "Checking access to rahul-m21/Test_Tool..."
+          echo "Checking access to repository rahul-m21/Test_Tool..."
           curl -s -H "Authorization: token ${{ secrets.PQC_PAT_TOKEN }}" \
             https://api.github.com/repos/rahul-m21/Test_Tool | jq .name
       
-          echo "Checking access to v2.0.0 tag..."
+          echo "Checking access to branch PQC-V2..."
           curl -s -H "Authorization: token ${{ secrets.PQC_PAT_TOKEN }}" \
-            https://api.github.com/repos/rahul-m21/Test_Tool/git/refs/tags/v2.0.0 | jq
+            https://api.github.com/repos/rahul-m21/Test_Tool/git/refs/heads/PQC-V2 | jq
         shell: bash
 
-      # Main step: Use the PQC_Assessment Runner Action
-      - name: Use PQC_Assessment Runner Action
-        uses: rahul-m21/Test_Tool@PQC-V2
-        with:
-          target-repo-url: ${{ github.repository }}
-          token: ${{ secrets.PQC_PAT_TOKEN }}  # Use PAT for authentication
+      # Main Step: Run the PQC Assessment Action
+      # - name: Use PQC_Assessment Runner Action
+      #   uses: rahul-m21/Test_Tool@PQC-V2 # Use the branch "PQC-V2"
+      #   with:
+      #     target-repo-url: ${{ github.repository }}
+      #     token: ${{ secrets.PQC_PAT_TOKEN }}  # Pass the Personal Access Token for authentication

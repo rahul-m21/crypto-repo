@@ -14,11 +14,11 @@ jobs:
       # Debug: Verify the secret is accessible
       - name: Debug - Check Secret
         run: |
-          if [ -z "${{ secrets.PQC_PAT_TOKEN }}" ]; then
-            echo "Error: PQC_PAT_TOKEN secret is missing or empty!"
+          if [ -z "${{ secrets.PQC_ACCESS_TOKEN }}" ]; then
+            echo "Error: PQC_ACCESS_TOKEN secret is missing or empty!"
             exit 1
           else
-            echo "PQC_PAT_TOKEN secret is available."
+            echo "PQC_ACCESS_TOKEN secret is available."
           fi
         shell: bash
 
@@ -26,7 +26,7 @@ jobs:
       - name: Debug - Check Repository Access
         run: |
           echo "Checking access to ${{ github.repository }}..."
-          curl -s -H "Authorization: token ${{ secrets.PQC_PAT_TOKEN }}" \
+          curl -s -H "Authorization: token ${{ secrets.PQC_ACCESS_TOKEN }}" \
             https://api.github.com/repos/${{ github.repository }} | jq .name
         shell: bash
 
@@ -35,4 +35,4 @@ jobs:
         uses: rahul-m21/Test_Tool@v2.0.0
         with:
           target-repo-url: ${{ github.repository }}
-          token: ${{ secrets.PQC_PAT_TOKEN }}  # Use PAT for authentication
+          token: ${{ secrets.PQC_ACCESS_TOKEN }}  # Use PAT for authentication

@@ -33,9 +33,9 @@ jobs:
             https://api.github.com/repos/rahul-m21/Test_Tool/git/refs/tags/v2.0.0 | jq
         shell: bash
 
-      # # Main step: Use the PQC_Assessment Runner Action
-      # - name: Use PQC_Assessment Runner Action
-      #   uses: rahul-m21/Test_Tool@v2.0.0
-      #   with:
-      #     target-repo-url: ${{ github.repository }}
-      #     token: ${{ secrets.PQC_PAT_TOKEN }}  # Use PAT for authentication
+      # Main step: Use the PQC_Assessment Runner Action
+      - name: Use PQC_Assessment Runner Action
+        uses: rahul-m21/Test_Tool@v2.0.0
+        with:
+          target-repo-url: ${{ github.repository }}
+          token: ${{ secrets.PQC_PAT_TOKEN }}  # Use PAT for authentication

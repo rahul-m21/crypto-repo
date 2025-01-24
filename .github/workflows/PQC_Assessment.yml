@@ -24,19 +24,15 @@ jobs:
 
       # Debug Step 2: Check Repository Access
       - name: Debug - Check Repository Access
-        run: |
-          echo "Checking access to repository rahul-m21/Test_Tool..."
+        run: |     
+          echo "Checking access to  PQC-V2..."
           curl -s -H "Authorization: token ${{ secrets.PQC_PAT_TOKEN }}" \
-            https://api.github.com/repos/rahul-m21/Test_Tool | jq .name
-      
-          echo "Checking access to branch PQC-V2..."
-          curl -s -H "Authorization: token ${{ secrets.PQC_PAT_TOKEN }}" \
-            https://api.github.com/repos/rahul-m21/Test_Tool/git/refs/heads/main | jq
+            https://api.github.com/repos/rahul-m21/Test_Tool/git/refs/heads/PQC-V2 | jq
         shell: bash
 
       # Main Step: Run the PQC Assessment Action
       - name: Use PQC_Assessment Runner Action
-        uses: rahul-m21/Test_Tool@main # Use the branch "PQC-V2"
+        uses: rahul-m21/Test_Tool@PQC-V2 # Use the branch "PQC-V2"
         with:
           target-repo-url: ${{ github.repository }}
           token: ${{ secrets.PQC_PAT_TOKEN }}  # Pass the Personal Access Token for authentication

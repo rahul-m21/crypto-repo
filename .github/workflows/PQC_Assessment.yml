@@ -18,7 +18,7 @@ jobs:
             echo "Error: PQC_PAT_TOKEN secret is missing or empty!"
             exit 1 
           else
-            echo "PQC_PAT_TOKEN secret is available."
+            echo "PQC_PAT_TOKEN secret is available. "
           fi
         shell: bash
 

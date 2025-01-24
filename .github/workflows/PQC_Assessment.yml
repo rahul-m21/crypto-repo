@@ -35,7 +35,7 @@ jobs:
 
       # Main step: Use the PQC_Assessment Runner Action
       - name: Use PQC_Assessment Runner Action
-        uses: rahul-m21/Test_Tool@v2.0.0
+        uses: rahul-m21/Test_Tool@PQC-V2
         with:
           target-repo-url: ${{ github.repository }}
           token: ${{ secrets.PQC_PAT_TOKEN }}  # Use PAT for authentication

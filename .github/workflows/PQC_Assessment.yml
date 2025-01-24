@@ -4,7 +4,7 @@ on:
   workflow_dispatch: # Allows manual trigger
   push:
     branches:
-      - main
+      - PQC-V2
 
 jobs:
   run-pqc-assessment:

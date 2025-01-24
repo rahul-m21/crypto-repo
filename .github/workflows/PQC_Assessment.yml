@@ -31,7 +31,7 @@ jobs:
       
           echo "Checking access to branch PQC-V2..."
           curl -s -H "Authorization: token ${{ secrets.PQC_PAT_TOKEN }}" \
-            https://api.github.com/repos/rahul-m21/Test_Tool/git/refs/heads/PQC-V2 | jq
+            https://api.github.com/repos/rahul-m21/Test_Tool/git/refs/heads/main | jq
         shell: bash
 
       # Main Step: Run the PQC Assessment Action

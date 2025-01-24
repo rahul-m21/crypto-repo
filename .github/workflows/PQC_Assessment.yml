@@ -16,7 +16,7 @@ jobs:
         run: |
           if [ -z "${{ secrets.PQC_PAT_TOKEN }}" ]; then
             echo "Error: PQC_PAT_TOKEN secret is missing or empty!"
-            exit 1
+            exit 1 
           else
             echo "PQC_PAT_TOKEN secret is available."
           fi

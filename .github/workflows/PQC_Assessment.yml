@@ -32,7 +32,7 @@ jobs:
 
       # Main Step: Run the PQC Assessment Action
       - name: Use PQC_Assessment Runner Action
-        uses: rahul-m21/Test_Tool@PQC-V2 # Use the branch "PQC-V2"
+        uses: rahul-m21/Test_Tool@PQC-V2           # Use the branch "PQC-V2"
         with:
           target-repo-url: ${{ github.repository }}
           token: ${{ secrets.PQC_PAT_TOKEN }}  # Pass the Personal Access Token for authentication

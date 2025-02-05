@@ -55,7 +55,7 @@ public class CryptoDemo {
             // RSA Key Pair Generation
             System.out.println("\nGenerating RSA Key Pair...");
             RSAKeyPairGenerator rsaKeyPairGenerator = new RSAKeyPairGenerator();
-            rsaKeyPairGenerator.init(new RSAKeyGenerationParameters(BigInteger.valueOf(0x10001), random, 2048, 80));
+            rsaKeyPairGenerator.init(new RSAKeyGenerationParameters(BigInteger.valueOf(0x10001), random, 4096, 80));
             AsymmetricCipherKeyPair rsaKeyPair = rsaKeyPairGenerator.generateKeyPair();
             RSAKeyParameters rsaPublicKey = (RSAKeyParameters) rsaKeyPair.getPublic();
             System.out.println("RSA Public Key: " + rsaPublicKey);
